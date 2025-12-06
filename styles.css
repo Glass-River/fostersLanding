@@ -179,7 +179,7 @@ nav a:hover {
 }
 
 .hero-image-img {
-    width: 600px;
+    width: 400px;
     height: auto;
     object-fit: contain;
     border-radius: 8px;
@@ -334,7 +334,7 @@ footer {
 /* Responsive */
 @media (max-width: 768px) {
     .container {
-        padding: 0 1rem;
+        padding: 0 1.5rem;
         max-width: 100%;
     }
 
@@ -415,7 +415,7 @@ footer {
     }
 
     .hero-image {
-        display: none;
+        /* display: none; */
     }
 
     .hero-shape {
