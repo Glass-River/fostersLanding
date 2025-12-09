@@ -453,6 +453,15 @@ footer {
         display: none;
     }
 
+    nav a[href="#get-quote"] {
+        font-size: 0;
+    }
+
+    nav a[href="#get-quote"]::after {
+        content: "Quote";
+        font-size: 0.9rem;
+    }
+
     .hero-image {
         display: none;
     }
