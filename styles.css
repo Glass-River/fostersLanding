@@ -629,6 +629,56 @@ footer {
     border-color: var(--orange);
 }
 
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    font-weight: normal;
+    color: var(--text-color);
+}
+
+.checkbox-label:hover {
+    border-color: var(--orange);
+    background-color: rgba(215, 90, 24, 0.05);
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    accent-color: var(--orange);
+    flex-shrink: 0;
+}
+
+.checkbox-label input[type="checkbox"]:checked+span {
+    font-weight: 600;
+    color: var(--orange);
+}
+
+.checkbox-label:has(input[type="checkbox"]:checked) {
+    border-color: var(--orange);
+    background-color: rgba(215, 90, 24, 0.1);
+}
+
+.checkbox-label span {
+    flex: 1;
+    user-select: none;
+}
+
 .form-group textarea {
     min-height: 120px;
 }
