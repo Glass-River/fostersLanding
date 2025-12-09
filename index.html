@@ -171,6 +171,34 @@
       </div>
     </footer>
   </div>
+  <script>
+    // Smooth scroll for "Get a Quote" links with 100ms duration
+    document.querySelectorAll('a[href="#get-quote"]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector('#get-quote');
+        if (target) {
+          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+          const startPosition = window.pageYOffset;
+          const distance = targetPosition - startPosition;
+          const duration = 600;
+          let start = null;
+
+          function step(timestamp) {
+            if (!start) start = timestamp;
+            const progress = timestamp - start;
+            const progressPercent = Math.min(progress / duration, 1);
+            window.scrollTo(0, startPosition + distance * progressPercent);
+            if (progress < duration) {
+              window.requestAnimationFrame(step);
+            }
+          }
+
+          window.requestAnimationFrame(step);
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
