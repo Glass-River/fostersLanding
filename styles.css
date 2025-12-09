@@ -610,7 +610,8 @@ footer {
 }
 
 .form-group input,
-.form-group select {
+.form-group select,
+.form-group textarea {
     width: 100%;
     padding: 1rem;
     border: 2px solid #e0e0e0;
@@ -618,15 +619,33 @@ footer {
     font-family: 'Jost', sans-serif;
     font-size: 1rem;
     transition: border-color 0.3s ease;
+    resize: vertical;
 }
 
 .form-group input:focus,
-.form-group select:focus {
+.form-group select:focus,
+.form-group textarea:focus {
     outline: none;
     border-color: var(--orange);
+}
+
+.form-group textarea {
+    min-height: 120px;
 }
 
 .quote-form button {
     width: 100%;
     margin-top: 1rem;
+}
+
+.quote-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#form-message {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
 }

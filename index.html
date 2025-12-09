@@ -125,14 +125,22 @@
           <h2>Ready to get covered?</h2>
           <p>We'll email you a quote in minutes.</p>
         </div>
-        <form class="quote-form">
+        <form class="quote-form" id="quote-form">
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Your Name" required>
           </div>
           <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+          </div>
+          <div class="form-group">
             <label for="phone">Phone Number</label>
             <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555" required>
+          </div>
+          <div class="form-group">
+            <label for="details">Details <span style="font-weight: normal; opacity: 0.7;">(optional)</span></label>
+            <textarea id="details" name="details" placeholder="Tell us about your company or needs" rows="4"></textarea>
           </div>
           <div class="form-group">
             <label for="insurance-type">Type of Insurance</label>
@@ -143,10 +151,11 @@
               <option value="commercial-property">Commercial Property</option>
               <option value="commercial-auto">Commercial Auto</option>
               <option value="cyber-insurance">Cyber Insurance</option>
-              <option value="cyber-insurance">Umbrella Insurance</option>
+              <option value="umbrella-insurance">Umbrella Insurance</option>
             </select>
           </div>
           <button type="submit" class="btn btn-primary">Get Quote</button>
+          <div id="form-message" style="margin-top: 1rem; text-align: center; display: none;"></div>
         </form>
       </div>
     </div>
@@ -171,7 +180,13 @@
       </div>
     </footer>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
+    // Initialize EmailJS
+    (function () {
+      emailjs.init("gJS6r5ubdivSK_Usa");
+    })();
+
     // Smooth scroll for "Get a Quote" links with 100ms duration
     document.querySelectorAll('a[href="#get-quote"]').forEach(link => {
       link.addEventListener('click', function (e) {
@@ -197,6 +212,55 @@
           window.requestAnimationFrame(step);
         }
       });
+    });
+
+    // Handle form submission
+    document.getElementById('quote-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const submitButton = form.querySelector('button[type="submit"]');
+      const messageDiv = document.getElementById('form-message');
+
+      // Get form values
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        details: document.getElementById('details').value || 'Not provided',
+        insuranceType: document.getElementById('insurance-type').value || 'Not specified'
+      };
+
+      // Disable submit button and show loading state
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+      messageDiv.style.display = 'none';
+
+      // Send email via EmailJS
+      emailjs.send('service_cn53bwr', 'template_3jdp9gg', {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        details: formData.details,
+        insurance_type: formData.insuranceType
+      })
+        .then(function () {
+          // Success
+          messageDiv.textContent = 'Thank you! Your quote request has been sent successfully.';
+          messageDiv.style.color = 'var(--green)';
+          messageDiv.style.display = 'block';
+          form.reset();
+          submitButton.disabled = false;
+          submitButton.textContent = 'Get Quote';
+        }, function (error) {
+          // Error
+          messageDiv.textContent = 'Sorry, there was an error sending your request. Please try again or contact us directly.';
+          messageDiv.style.color = 'var(--orange)';
+          messageDiv.style.display = 'block';
+          submitButton.disabled = false;
+          submitButton.textContent = 'Get Quote';
+          console.error('EmailJS error:', error);
+        });
     });
   </script>
 </body>
