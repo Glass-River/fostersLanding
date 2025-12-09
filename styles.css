@@ -492,6 +492,31 @@ footer {
 
     .feature-card {
         padding: 2rem;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+        gap: 0 1rem;
+        align-items: center;
+    }
+
+    .feature-card .feature-icon {
+        grid-column: 1;
+        grid-row: 1;
+        margin-bottom: 0;
+        margin-right: 0;
+    }
+
+    .feature-card h3 {
+        grid-column: 2;
+        grid-row: 1;
+        margin-bottom: 0;
+        align-self: center;
+    }
+
+    .feature-card p {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        margin-top: 1rem;
     }
 
     .quote-form {
