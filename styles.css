@@ -340,39 +340,20 @@ footer {
 
     .container:has(.hero) {
         position: relative;
-        height: 100vh;
         display: flex;
         flex-direction: column;
-    }
-
-    .container:has(.hero)::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: url('puzzles.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        opacity: 0.05;
-        z-index: 0;
-        pointer-events: none;
     }
 
     .hero {
         grid-template-columns: 1fr;
         text-align: center;
-        padding: 0.5rem 0 0;
+        padding: 0.5rem 0 2rem;
         gap: 1rem;
-        flex: 1;
         align-items: flex-start;
         justify-content: flex-start;
         display: flex;
         flex-direction: column;
         min-height: 0;
-        height: 78vh;
     }
 
     header {
@@ -384,19 +365,18 @@ footer {
         display: flex;
         flex-direction: column;
         width: 100%;
-        flex: 1;
-        justify-content: space-between;
     }
 
     .hero-content h1 {
         font-size: 2.5rem;
         margin-bottom: 1rem;
+        margin-top: 2rem;
         text-align: left;
         width: 100%;
     }
 
     .hero-content p {
-        margin-bottom: 1.5rem;
+        margin-bottom: 4.5rem;
         text-align: left;
         width: 100%;
     }
@@ -407,9 +387,17 @@ footer {
         gap: 1rem;
         width: 100%;
         align-items: center;
-        margin-top: auto;
+        margin-top: 2rem;
         padding-bottom: 0;
-        margin-bottom: 35px;
+        margin-bottom: 2rem;
+    }
+
+    .hero-buttons .btn-primary {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
     }
 
     .hero-buttons .btn-secondary {
@@ -463,7 +451,17 @@ footer {
     }
 
     .hero-image {
-        display: none;
+        display: block;
+        width: 100%;
+        margin-top: 2rem;
+        order: 3;
+    }
+
+    .hero-image-img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        opacity: 0.58;
     }
 
     .hero {
@@ -473,6 +471,11 @@ footer {
     .hero-content {
         position: relative;
         z-index: 1;
+        order: 1;
+    }
+
+    .hero-buttons {
+        order: 2;
     }
 
     header,
