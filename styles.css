@@ -364,8 +364,10 @@ footer {
         padding: 0.5rem 0 2rem;
         gap: 2rem;
         min-height: 100vh;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
+        justify-content: flex-start;
+        display: flex;
+        flex-direction: column;
     }
 
     header {
@@ -374,19 +376,24 @@ footer {
 
     .hero-content {
         text-align: left;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: space-between;
+        width: 100%;
     }
 
     .hero-content h1 {
         font-size: 2.5rem;
         margin-bottom: 1.5rem;
         text-align: left;
-        width: 75%;
+        width: 85%;
     }
 
     .hero-content p {
         margin-bottom: 2rem;
         text-align: left;
-        width: 75%;
+        width: 85%;
     }
 
     .hero-buttons {
@@ -395,14 +402,12 @@ footer {
         gap: 1rem;
         width: 100%;
         align-items: center;
+        margin-top: auto;
+        padding-top: 2rem;
     }
 
     .hero-buttons .btn-secondary {
         display: none;
-    }
-
-    .hero-content p {
-        margin-bottom: 7rem;
     }
 
     .features-grid {
